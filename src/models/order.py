@@ -5,12 +5,19 @@ from .allcodes import Allcode
 
 
 class Order(db.Model):
+    __tablename__ = "Orders"
+
+    # Define column
     id = Column(Integer, primary_key=True, autoincrement=True)
-    userID = Column(Integer, ForeignKey(User.id, ondelete="CASCADE"))
-    statusID = Column(String(255), ForeignKey(Allcode.keyMap, ondelete="CASCADE"))
+    userID = Column(Integer, ForeignKey(User.id))
+    statusID = Column(String(255), ForeignKey(Allcode.keyMap))
     orderDate = Column(
         DateTime(timezone=True), server_default=func.now(), nullable=True
     )
-    totalPrice = Column(Float, nullable=False)
+    totalPrice = Column(Float, nullable=True)
     createdAt = Column(DateTime(timezone=True), server_default=func.now())
     updatedAt = Column(DateTime(timezone=True), server_default=func.now())
+
+    # Constructor
+    def __init__(self):
+        pass

@@ -14,5 +14,9 @@ class Product(db.Model):
     createdAt = Column(DateTime(timezone=True), server_default=func.now())
     updatedAt = Column(DateTime(timezone=True), server_default=func.now())
 
+    # Constructor:
+    def __init__(self):
+        pass
+
     def __repr__(self):
         return f"<Product {self.productName}>"

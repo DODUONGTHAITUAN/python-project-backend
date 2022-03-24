@@ -7,3 +7,9 @@ Step 3: Open terminal run command: py -m venv venv
 Step 4: Run: ./venv/Script/activate --> (active env)
 
 Step 5: Run command: pip3 install -r requirements.txt --> (Install all dependencies of project)
+
+Step 6: Create .flaskenv then coppy content in .flaskenv.example
+
+Step 7: Run command py ./server.py to run server
+
+Step 8: Get link http://localhost:8080/ then Open browser and paste link
