@@ -108,7 +108,7 @@ def get_all_users_servive(data):
 def delete_user_service(userId):
     try:
         """Check is digit"""
-        userId = int(userId)
+        print(userId)
         response = find_user(userId)
         if response["isExist"] and response["code"] == 0:
             # db.session.delete(response["user"])
@@ -127,10 +127,8 @@ def find_user(id):
     try:
         user = User.query.filter_by(id=id).first()
         if not user is None:
-            print("Valid")
             return {"isExist": True, "user": user, "code": 0}
         else:
-            print("Invalid")
             return {"isExist": False, "code": 0}
     except Exception as e:
         print(e)
