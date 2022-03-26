@@ -3,7 +3,7 @@ from sqlalchemy import Integer, String, DateTime, func, Column, LargeBinary, Tex
 
 
 class Product(db.Model):
-    __tablename__ = "Products"
+    __tablename__ = "Product"
     id = Column(Integer, primary_key=True, autoincrement=True)
     productName = Column(Text, nullable=False)
     image = Column(LargeBinary, nullable=False)

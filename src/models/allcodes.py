@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String, DateTime, func
 from sqlalchemy.orm import relationship
 
 
-class Allcode(db.Model):
+class Allcodes(db.Model):
     __tablename__ = "Allcodes"
     # Define column
     id = Column(Integer, nullable=False, unique=True, autoincrement=True)
@@ -13,8 +13,15 @@ class Allcode(db.Model):
     createdAt = Column(DateTime(timezone=True), server_default=func.now())
     updatedAt = Column(DateTime(timezone=True), server_default=func.now())
 
+    # gender_allcodes = relationship(
+    #     "User", foreign_keys="[User.genderID]", back_populates="gender_user"
+    # )
+    # role_allcodes = relationship(
+    #     "User", foreign_keys="[User.roleID]", back_populates="role_user"
+    # )
+
     # Add Relationship
-    users = relationship("User", backref="roleData")
+    #  users = relationship("User", backref="roleData")
 
     # Constuctor
     def __init__(self):
