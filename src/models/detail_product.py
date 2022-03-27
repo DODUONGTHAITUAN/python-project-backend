@@ -1,7 +1,7 @@
 from src import db
 from sqlalchemy import Column, Integer, String, DateTime, func, ForeignKey, Text
 
-from .allcodes import Allcode
+from .allcodes import Allcodes
 from .product import Product
 
 
@@ -13,13 +13,13 @@ class DetailProduct(db.Model):
     contentHTML = Column(Text, nullable=True)
     contentMarkdown = Column(Text, nullable=True)
     simSlots = Column(Integer, nullable=False, default=1)
-    osID = Column(String(255), ForeignKey(Allcode.keyMap))
+    osID = Column(String(255), ForeignKey(Allcodes.keyMap))
     batteryText = Column(String(255), nullable=False)
-    batteryID = Column(String(255), ForeignKey(Allcode.keyMap))
+    batteryID = Column(String(255), ForeignKey(Allcodes.keyMap))
     screenText = Column(String(255), nullable=False)
-    screenID = Column(String(255), ForeignKey(Allcode.keyMap))
-    brandID = Column(String(255), ForeignKey(Allcode.keyMap))
-    featureID = Column(String(255), ForeignKey(Allcode.keyMap))
+    screenID = Column(String(255), ForeignKey(Allcodes.keyMap))
+    brandID = Column(String(255), ForeignKey(Allcodes.keyMap))
+    featureID = Column(String(255), ForeignKey(Allcodes.keyMap))
 
     productID = Column(Integer, ForeignKey(Product.id))
 

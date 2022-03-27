@@ -12,4 +12,8 @@ Step 6: Create .flaskenv then coppy content in .flaskenv.example
 
 Step 7: Run command py ./server.py to run server
 
+# flask run -h localhost -p 8080
+
 Step 8: Get link http://localhost:8080/ then Open browser and paste link
+
+NOTE: Run pip freeze > requirements.txt --> auto generate file

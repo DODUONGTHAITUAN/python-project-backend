@@ -12,7 +12,7 @@ from .product import Product
 
 # Define class
 class LineItem(db.Model):
-    __tablename__ = "LineItems"
+    __tablename__ = "LineItem"
 
     # Define Columns
     id = Column(Integer, primary_key=True, autoincrement=True)
