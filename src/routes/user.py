@@ -14,14 +14,22 @@ user = Blueprint("user", __name__)
 
 """Create new User"""
 
+"""
+
+localhost:8080/user/create
+Methods : POST ==> Khi muốn tạo mới dự liêu
+GET ==> lay du lieu tư database VD lay het thong tin tuw database
+PUT ==> Chinnhr sua du lieu ==> VD: muon chinh suwar thong tin user
+DELETE ==> xoas du lieu ==> VD t muon xoa user ==> method delete 
+"""
+
 
 @user.route("/create", methods=["POST", "GET"])
 def create_user():
     if request.method == "GET":
-        return jsonify({"code": 200, "message": "OK"})
+        return jsonify({"code": 200, "message": "NOT OK"})
     """Get data from request client side"""
     data = request.get_json()
-    print(data)
     return create_user_controller(data)
 
 
@@ -75,7 +83,6 @@ def get_user_by_id():
 def update_user():
     try:
         data = request.get_json()
-        print(data)
         return update_user_controller(data)
     except:
         return jsonify({"code": 2, "message": "Error from server"})

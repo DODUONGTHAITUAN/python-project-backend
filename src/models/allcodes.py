@@ -28,4 +28,4 @@ class Allcodes(db.Model):
         pass
 
     def __repr__(self):
-        return f"<User {self.fullName}>"
+        return f"<Allcodes {self.fullName}>"

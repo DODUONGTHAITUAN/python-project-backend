@@ -111,8 +111,8 @@ def delete_user_service(userId):
         print(userId)
         response = find_user(userId)
         if response["isExist"] and response["code"] == 0:
-            # db.session.delete(response["user"])
-            # db.session.commit()
+            db.session.delete(response["user"])
+            db.session.commit()
             return jsonify({"code": 0, "message": "Delete user success"})
         return jsonify({"code": 1, "message": "Delete user failure"})
     except Exception as e:
