@@ -13,19 +13,23 @@ class Allcodes(db.Model):
     createdAt = Column(DateTime(timezone=True), server_default=func.now())
     updatedAt = Column(DateTime(timezone=True), server_default=func.now())
 
-    # gender_allcodes = relationship(
-    #     "User", foreign_keys="[User.genderID]", back_populates="gender_user"
-    # )
-    # role_allcodes = relationship(
-    #     "User", foreign_keys="[User.roleID]", back_populates="role_user"
-    # )
-
     # Add Relationship
-    #  users = relationship("User", backref="roleData")
+    """ Tạo quan hệ one to many"""
+    """ Product để trong ngoặc thì phải ghi đúng tên class
+        backref: sẽ là một đối tượng khi mà chúng ta kéo product lên 
+        Ví dụ: bên dưới là dùng backref với product nên khi mình get product lên 
+        p = Product.get(id)
+        p.brand_data.value ==> trả về giá trị value trong bảng allcode
+     """
+    # Raltionship one to many vơi bảng Product
+    products = relationship("Product", backref="brand_data", lazy=True)
+
+    # Raltionship one to many vơi bảng Product
+    # users = relationship("User", backref="role_data", lazy=True)
 
     # Constuctor
     def __init__(self):
         pass
 
     def __repr__(self):
-        return f"<Allcodes {self.fullName}>"
+        return f"<Allcodes {self.id}>"

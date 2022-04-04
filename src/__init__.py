@@ -11,6 +11,7 @@ db = SQLAlchemy(app)
 
 from .models.allcodes import Allcodes
 from .models.user import User
+from .models.product import Product
 
 # from .models.order import Order
 # from .models.detail_product import DetailProduct
