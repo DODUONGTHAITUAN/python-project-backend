@@ -55,14 +55,6 @@ def delete_user():
     except:
         return jsonify({"code": 2, "message": "Error from server"})
 
-    try:
-        """Convert ImmutableMultiDict to dict"""
-        data = request.args.to_dict(flat=True)
-        return get_all_users_controller(data)
-    except Exception as e:
-        print(f"Error at get all user  router: {e}")
-        return jsonify({"code": 3, "message": "Error when recieve data from client"})
-
 
 """Get user by id user [GET]"""
 

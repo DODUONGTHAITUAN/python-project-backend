@@ -1,36 +1,19 @@
-from flask import Blueprint
+from flask import Blueprint, request
+
+from src import db
+from src.models.product import Product
+from src.controllers.product import get_all_products_controller
 
 
 product = Blueprint("product", __name__)
 
 
-"""[GET] Get all products - pagnation"""
-
-
-@product.route("/get-all-products", methods=["GET"])
-def get_all_products():
-    return "hello world"
-
-
-"""[PUT] update product"""
-
-
-@product.route("/update", methods=["PUT"])
-def update_product():
-    pass
-
-
-"""[POST] create new Product"""
-
-
-@product.route("/create", methods=["POST"])
-def create_product():
-    pass
-
-
-"""[DELETE] delete product"""
-
-
-@product.route("/delete", methods=["DELETE"])
-def delete_product():
-    pass
+@product.route("/get-products")
+def get_all_product():
+    try:
+        data = request.args.to_dict(flat=True)
+        print(data)
+        return get_all_products_controller(data)
+    except Exception as e:
+        print(e)
+        return "Hello world"

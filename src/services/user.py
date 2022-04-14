@@ -45,9 +45,10 @@ def create_user_service(data):
         return jsonify({"code": 2, "message": "Error from server"})
 
 
-def formartUsers(usersRaw):
+def formatUsers(usersRaw):
     users = []
     for item in usersRaw.items:
+        print(item.genderData.value)
         user = format_user(item)
         users.append(user)
     return users
@@ -62,6 +63,8 @@ def format_user(userRaw):
         "phonenumber": userRaw.phonenumber,
         "email": userRaw.email,
         "roleID": userRaw.roleID,
+        "gender_value": userRaw.genderData.value,
+        "role_value": userRaw.roleData.value,
     }
 
 
@@ -72,7 +75,6 @@ def get_all_users_servive(data):
     try:
         page = data["page"] or "1"
         per_page = data["per_page"] or "10"
-        find_user(1)
         """Check digit"""
         if not page.isdigit() or not per_page.isdigit():
             page = 1
@@ -82,7 +84,7 @@ def get_all_users_servive(data):
             per_page = int(per_page)
         usersRaw = User.query.paginate(per_page=per_page, page=page, error_out=True)
         """Format data users"""
-        users = formartUsers(usersRaw)
+        users = formatUsers(usersRaw)
 
         """Send data to client"""
         return jsonify(
