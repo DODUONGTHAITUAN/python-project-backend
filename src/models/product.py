@@ -19,8 +19,11 @@ class Product(db.Model):
     createdAt = Column(DateTime(timezone=True), server_default=func.now())
     updatedAt = Column(DateTime(timezone=True), server_default=func.now())
 
-    """ Define relatioship """
-    # brandData = relationship(Allcodes, foreign_keys=[brandID])
+    # Relationship
+    #     products = relationship("Product", backref="brand_data", lazy=True)
+
+    options = relationship("Option", backref="options_data", lazy=True)
+
     # Constructor:
     def __init__(self, productName, image, cpu, gpu, productDate, origin, brandID):
         self.productName = productName

@@ -16,6 +16,16 @@ def format_products(dataRaw):
 
 # Format product
 def format_product(item):
+    # print(item.options[0].color_data)
+    option = {}
+    if len(item.options) > 0:
+        option["ram"] = item.options[0].ram
+        option["rom"] = item.options[0].rom
+        option["price"] = item.options[0].price
+        option["image"] = item.options[0].image
+        option["color_id"] = item.options[0].colorID
+        option["color_value"] = item.options[0].color_data.value
+
     return {
         "id": item.id,
         "product_name": item.productName,
@@ -25,6 +35,7 @@ def format_product(item):
         "origin": item.origin,
         "brandID": item.brandID,
         "brand_value": item.brand_data.value,
+        "option": option,
     }
 
 
@@ -32,7 +43,6 @@ def get_all_products_service(data):
     try:
         # Get page
         page = data["page"] or "1"
-
         # get percent page. One page with per_page element
         per_page = data["per_page"] or "10"
         if not page.isdigit() or not per_page.isdigit():
@@ -61,5 +71,5 @@ def get_all_products_service(data):
             }
         )
     except Exception as e:
-        print(e)
+        print("error here: ", e)
         return jsonify({"code": 2, "message": "Get all products fail"})

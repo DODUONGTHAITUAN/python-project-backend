@@ -110,7 +110,6 @@ def get_all_users_servive(data):
 def delete_user_service(userId):
     try:
         """Check is digit"""
-        print(userId)
         response = find_user(userId)
         if response["isExist"] and response["code"] == 0:
             db.session.delete(response["user"])

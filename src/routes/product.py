@@ -12,7 +12,6 @@ product = Blueprint("product", __name__)
 def get_all_product():
     try:
         data = request.args.to_dict(flat=True)
-        print(data)
         return get_all_products_controller(data)
     except Exception as e:
         print(e)

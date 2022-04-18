@@ -24,9 +24,6 @@ class Allcodes(db.Model):
     # Raltionship one to many vơi bảng Product
     products = relationship("Product", backref="brand_data", lazy=True)
 
-    # Raltionship one to many vơi bảng Product
-    # users = relationship("User", backref="role_data", lazy=True)
-
     # Constuctor
     def __init__(self):
         pass

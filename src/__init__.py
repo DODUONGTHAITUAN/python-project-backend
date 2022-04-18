@@ -12,12 +12,8 @@ db = SQLAlchemy(app)
 from .models.allcodes import Allcodes
 from .models.user import User
 from .models.product import Product
-
-# from .models.order import Order
-# from .models.detail_product import DetailProduct
-# from .models.line_item import LineItem
-# from .models.option import Option
-# from .models.product import Product
+from .models.option import Option
+from .models.detail_product import DetailProduct
 
 
 def create_app():
@@ -32,7 +28,5 @@ def create_app():
     db.init_app(app)
 
     db.create_all()
-
-    # from .models.product import Product
 
     return app
